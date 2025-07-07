@@ -234,21 +234,21 @@
         padding: 0;
         width: 100%;
         overflow-x: hidden;
-        font-size: 95%;
+        font-size: 100%;
       }
       .container {
         width: 100%;
         max-width: 100%;
         min-height: 100vh;
         margin: 0;
-        padding: 0 0 calc(80px + env(safe-area-inset-bottom)) 0;
-        border-radius: 24px 24px 0 0;
+        padding: 0 0 calc(100px + env(safe-area-inset-bottom)) 0;
+        border-radius: 32px 32px 0 0;
       }
       .standby-video-box {
         width: 100%;
         max-width: 100%;
         aspect-ratio: 4/5;
-        border-radius: 24px 24px 0 0;
+        border-radius: 32px 32px 0 0;
       }
       .input-area-wrapper {
         width: 100%;
@@ -258,103 +258,86 @@
       .input-area {
         width: 100%;
         max-width: 100%;
-        border-radius: 0 0 24px 24px;
-        padding: 10px 14px calc(10px + env(safe-area-inset-bottom)) 14px;
+        border-radius: 0 0 32px 32px;
+        padding: 12px 16px calc(12px + env(safe-area-inset-bottom)) 16px;
       }
       .input-area input {
-        padding: 10px 14px;
-        font-size: 15px;
-        margin-right: 8px;
+        padding: 12px 16px;
+        font-size: 17px;
+        margin-right: 10px;
       }
       .input-area button {
-        padding: 8px 18px;
-        font-size: 15px;
+        padding: 10px 22px;
+        font-size: 17px;
       }
       .chat-area {
         width: 100%;
-        padding: 0 10px;
-        gap: 10px;
+        padding: 0 16px;
+        gap: 12px;
       }
       .bubble {
-        max-width: 85%;
-        padding: 10px 16px;
-        font-size: 15px;
-        line-height: 1.6;
-        border-radius: 18px;
+        max-width: 80%;
+        padding: 12px 18px;
+        font-size: 17px;
+        line-height: 1.7;
+        border-radius: 22px;
       }
       .bubble.user {
-        border-bottom-right-radius: 6px;
+        border-bottom-right-radius: 8px;
       }
       .bubble.bot {
-        border-bottom-left-radius: 6px;
+        border-bottom-left-radius: 8px;
       }
       .time-display {
-        padding: 6px 14px;
-        font-size: 13px;
-        margin: 10px auto;
-        border-radius: 14px;
+        padding: 8px 16px;
+        font-size: 14px;
+        margin: 16px auto;
+        border-radius: 16px;
       }
       .avatar {
-        width: 100px;
-        height: 100px;
-        margin: 24px auto 6px auto;
+        width: 140px;
+        height: 140px;
+        margin: 32px auto 8px auto;
       }
     }
     
-    /* 添加更多响应式断点以适应不同尺寸的手机 */
+    /* 适配中等尺寸手机 */
     @media (max-width: 375px) {
-      body {
-        font-size: 90%;
-      }
       .container {
-        border-radius: 20px 20px 0 0;
+        border-radius: 28px 28px 0 0;
       }
       .standby-video-box {
-        border-radius: 20px 20px 0 0;
+        border-radius: 28px 28px 0 0;
       }
       .input-area {
-        border-radius: 0 0 20px 20px;
-        padding: 8px 12px calc(8px + env(safe-area-inset-bottom)) 12px;
+        border-radius: 0 0 28px 28px;
       }
-      .input-area input {
-        padding: 8px 12px;
-        font-size: 14px;
-      }
-      .input-area button {
-        padding: 7px 16px;
-        font-size: 14px;
-      }
-      .bubble {
-        padding: 8px 14px;
-        font-size: 14px;
-        border-radius: 16px;
-      }
-      .time-display {
-        padding: 5px 12px;
-        font-size: 12px;
-        border-radius: 12px;
+      .avatar {
+        width: 130px;
+        height: 130px;
       }
     }
     
     /* 适配超小屏幕 */
     @media (max-width: 320px) {
-      body {
-        font-size: 85%;
+      .container {
+        border-radius: 24px 24px 0 0;
+      }
+      .standby-video-box {
+        border-radius: 24px 24px 0 0;
+      }
+      .input-area {
+        border-radius: 0 0 24px 24px;
       }
       .avatar {
-        width: 90px;
-        height: 90px;
+        width: 120px;
+        height: 120px;
       }
       .bubble {
-        font-size: 13px;
-        padding: 7px 12px;
+        font-size: 16px;
       }
-      .input-area input {
-        font-size: 13px;
-      }
-      .input-area button {
-        font-size: 13px;
-        padding: 6px 14px;
+      .input-area input, .input-area button {
+        font-size: 16px;
       }
     }
     

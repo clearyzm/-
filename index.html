@@ -20,7 +20,7 @@
     
     body {
       margin: 0;
-      padding: 16px 0 0 0;
+      padding: env(safe-area-inset-top, 16px) env(safe-area-inset-right, 16px) 0 env(safe-area-inset-left, 16px);
       min-height: 100vh;
       width: 100%;
       font-family: 'ZCOOL KuaiLe', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
@@ -30,28 +30,30 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
+      box-sizing: border-box;
     }
     .container {
       width: 100%;
-      max-width: min(420px, 92%);
+      max-width: min(420px, 94%);
       margin: 0 auto;
       background: rgba(255,255,255,0.97);
-      border-radius: 32px;
+      border-radius: clamp(24px, 6vw, 32px);
       box-shadow: 0 12px 40px 0 rgba(0,0,0,0.10);
-      padding: 0 0 100px 0;
-      min-height: 90vh;
+      padding: 0 0 calc(80px + env(safe-area-inset-bottom)) 0;
+      min-height: calc(100vh - env(safe-area-inset-top, 16px));
       position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
       z-index: 1;
+      overflow: hidden;
     }
     .standby-video-box {
       width: 100%;
-      max-width: min(420px, 100%);
+      max-width: 100%;
       aspect-ratio: 4/5;
       margin: 0;
-      border-radius: 32px;
+      border-radius: clamp(24px, 6vw, 32px) clamp(24px, 6vw, 32px) 0 0;
       overflow: hidden;
       box-shadow: 0 4px 24px 0 #ffe7f0cc;
       background: #000;
@@ -113,33 +115,34 @@
       width: 100%;
       padding: 0 clamp(12px, 4vw, 16px);
       overflow-y: auto;
-      margin-bottom: 8px;
+      margin: 8px 0;
       display: flex;
       flex-direction: column;
       gap: 12px;
       z-index: 1;
+      -webkit-overflow-scrolling: touch;
     }
     .time-display {
       text-align: center;
-      padding: 8px 16px;
+      padding: clamp(6px, 2vw, 8px) clamp(12px, 4vw, 16px);
       color: #ffffff;
-      font-size: 14px;
+      font-size: clamp(12px, 3.5vw, 14px);
       font-weight: normal;
       font-family: system-ui, -apple-system, sans-serif;
       background-color: rgba(0, 0, 0, 0.1);
       border-radius: 16px;
       width: fit-content;
-      margin: 0 auto 16px auto;
+      margin: clamp(12px, 3vw, 16px) auto;
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       z-index: 2;
     }
     .bubble {
-      max-width: clamp(75%, 80%, 85%);
-      padding: clamp(10px, 3vw, 18px) clamp(14px, 4vw, 18px);
-      border-radius: 22px;
-      font-size: clamp(15px, 4vw, 17px);
-      line-height: 1.7;
+      max-width: clamp(70%, 75%, 80%);
+      padding: clamp(10px, 3vw, 14px) clamp(14px, 4vw, 18px);
+      border-radius: clamp(18px, 5vw, 22px);
+      font-size: clamp(14px, 4vw, 16px);
+      line-height: 1.6;
       word-break: break-all;
       margin-bottom: 2px;
       box-shadow: 0 4px 16px rgba(0,0,0,0.06);
@@ -177,11 +180,11 @@
       z-index: 10;
       background: transparent;
       pointer-events: none;
-      padding: 0;
+      padding: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
     }
     .input-area {
       width: 100%;
-      max-width: min(420px, 92%);
+      max-width: min(420px, 94%);
       margin: 0 auto;
       background: rgba(255,255,255,0.98);
       display: flex;
@@ -189,21 +192,22 @@
       padding: clamp(10px, 3vw, 12px) clamp(12px, 4vw, 16px);
       box-sizing: border-box;
       border-top: 1px solid #f0f0f0;
-      border-radius: 0 0 32px 32px;
+      border-radius: 0 0 clamp(24px, 6vw, 32px) clamp(24px, 6vw, 32px);
       pointer-events: auto;
       box-shadow: 0 -2px 12px #ffe7f033;
+      gap: 10px;
     }
     .input-area input {
       flex: 1;
       border: none;
-      border-radius: 22px;
+      border-radius: clamp(18px, 5vw, 22px);
       padding: clamp(10px, 3vw, 12px) clamp(12px, 4vw, 16px);
-      font-size: clamp(15px, 4vw, 17px);
+      font-size: clamp(14px, 4vw, 16px);
       background: #f7f7fa;
       outline: none;
-      margin-right: 10px;
       box-shadow: 0 2px 8px #c6e6fb22;
       transition: box-shadow 0.2s;
+      min-width: 0;
     }
     .input-area input:focus {
       box-shadow: 0 2px 12px #ffb34744;
@@ -211,9 +215,9 @@
     .input-area button {
       background: linear-gradient(90deg, #ffb347 0%, #ffcc80 100%);
       border: none;
-      border-radius: 22px;
-      padding: clamp(8px, 2.5vw, 10px) clamp(18px, 5vw, 22px);
-      font-size: clamp(15px, 4vw, 17px);
+      border-radius: clamp(18px, 5vw, 22px);
+      padding: clamp(8px, 2.5vw, 10px) clamp(16px, 5vw, 20px);
+      font-size: clamp(14px, 4vw, 16px);
       color: #fff;
       font-weight: bold;
       cursor: pointer;
@@ -221,6 +225,7 @@
       transition: background 0.2s, transform 0.1s;
       font-family: 'ZCOOL KuaiLe', cursive;
       white-space: nowrap;
+      flex-shrink: 0;
     }
     .input-area button:active {
       background: linear-gradient(90deg, #ffcc80 0%, #ffb347 100%);
@@ -228,31 +233,29 @@
     }
     @media (max-width: 480px) {
       body {
-        background: none;
         padding: 0;
+        background: none;
       }
       .container {
         width: 100%;
         max-width: 100%;
-        min-height: 100vh;
         margin: 0;
-        padding: 0 0 calc(100px + env(safe-area-inset-bottom)) 0;
         border-radius: 0;
+        min-height: 100vh;
+        padding-bottom: calc(80px + env(safe-area-inset-bottom));
       }
       .standby-video-box {
-        width: 100%;
-        max-width: 100%;
         border-radius: 0;
       }
       .input-area-wrapper {
-        width: 100%;
-        max-width: 100%;
+        padding: 0 0 env(safe-area-inset-bottom) 0;
       }
       .input-area {
-        width: 100%;
         max-width: 100%;
         border-radius: 0;
-        padding: 12px 16px calc(12px + env(safe-area-inset-bottom)) 16px;
+      }
+      .bg-deco {
+        display: none;
       }
       .avatar-info .name {
         font-size: clamp(18px, 5vw, 22px);

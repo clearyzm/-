@@ -10,12 +10,14 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      cursor: none !important; /* 强制隐藏鼠标光标 */
     }
     
     html, body {
       width: 100%;
       overflow-x: hidden;
       position: relative;
+      cursor: none !important; /* 强制隐藏鼠标光标 */
     }
     
     body {
@@ -29,43 +31,256 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
+      padding: 20px 0;
     }
+    
+    /* iPhone 13 手机模型样式 */
+    .phone-wrapper {
+      width: 380px;
+      height: 780px;
+      background: #1a1a1a;
+      border-radius: 50px;
+      padding: 12px;
+      position: relative;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25), 
+                  inset 0 -5px 15px rgba(255, 255, 255, 0.1),
+                  inset 0 5px 15px rgba(0, 0, 0, 0.5);
+      margin: 20px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+    }
+    
+    /* 刘海屏 */
+    .notch {
+      position: absolute;
+      width: 160px;
+      height: 30px;
+      background: #1a1a1a;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 0 0 20px 20px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* 摄像头和扬声器 */
+    .speaker {
+      width: 60px;
+      height: 6px;
+      background: #2a2a2a;
+      border-radius: 3px;
+      margin-right: 20px;
+    }
+    
+    .camera {
+      width: 12px;
+      height: 12px;
+      background: #2a2a2a;
+      border-radius: 50%;
+      margin-left: 5px;
+    }
+    
+    /* 电源按钮 */
+    .power-button {
+      position: absolute;
+      width: 4px;
+      height: 60px;
+      background: #2a2a2a;
+      right: -2px;
+      top: 120px;
+      border-radius: 2px 0 0 2px;
+    }
+    
+    /* 音量按钮 */
+    .volume-up {
+      position: absolute;
+      width: 4px;
+      height: 40px;
+      background: #2a2a2a;
+      left: -2px;
+      top: 120px;
+      border-radius: 0 2px 2px 0;
+    }
+    
+    .volume-down {
+      position: absolute;
+      width: 4px;
+      height: 40px;
+      background: #2a2a2a;
+      left: -2px;
+      top: 170px;
+      border-radius: 0 2px 2px 0;
+    }
+    
+    /* 状态栏 */
+    .status-bar {
+      width: 100%;
+      height: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 25px;
+      color: white;
+      font-size: 15px;
+      font-family: system-ui, -apple-system, sans-serif;
+      position: absolute;
+      top: 12px;
+      left: 0;
+      z-index: 5;
+      box-sizing: border-box;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.2), transparent);
+    }
+    
+    .status-left {
+      margin-left: 20px;
+      font-weight: normal;
+    }
+    
+    .status-right {
+      display: flex;
+      align-items: center;
+      margin-right: 20px;
+      gap: 8px;
+    }
+    
+    .signal-icon {
+      display: flex;
+      align-items: flex-end;
+      height: 12px;
+      gap: 1px;
+    }
+    
+    .signal-bar {
+      width: 3px;
+      background-color: white;
+      border-radius: 1px;
+    }
+    
+    .signal-bar-1 {
+      height: 4px;
+    }
+    
+    .signal-bar-2 {
+      height: 6px;
+    }
+    
+    .signal-bar-3 {
+      height: 8px;
+    }
+    
+    .signal-bar-4 {
+      height: 10px;
+    }
+    
+    .battery {
+      width: 22px;
+      height: 10px;
+      border: 1px solid white;
+      border-radius: 2px;
+      margin-left: 2px;
+      position: relative;
+    }
+    
+    .battery::after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 4px;
+      background: white;
+      right: -3px;
+      top: 2px;
+      border-radius: 0 1px 1px 0;
+    }
+    
+    .battery-level {
+      height: 6px;
+      width: 60%;
+      background: white;
+      margin: 1px;
+      border-radius: 1px;
+    }
+    
+    /* 底部指示条 */
+    .home-indicator {
+      width: 140px;
+      height: 5px;
+      background: white;
+      border-radius: 3px;
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+    }
+    
     .container {
       width: 100%;
-      max-width: min(420px, 100%);
-      margin: 0 auto;
-      background: rgba(255,255,255,0.97);
-      border-radius: 32px;
+      max-width: 356px;
+      margin: 0;
+      background: rgba(242, 255, 245, 0.97);
+      border-radius: 36px;
       box-shadow: 0 12px 40px 0 rgba(0,0,0,0.10);
-      padding: 0 0 100px 0;
-      min-height: 100vh;
+      padding: 0;
+      height: 756px;
       position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
       z-index: 1;
+      overflow: hidden;
+      cursor: none !important; /* 强制隐藏鼠标光标 */
     }
+    
     .standby-video-box {
       width: 100%;
-      max-width: min(420px, 100%);
-      aspect-ratio: 4/5;
+      max-width: 356px;
+      height: 50%;
       margin: 0;
-      border-radius: 32px 32px 0 0;
+      border-radius: 36px 36px 0 0;
       overflow: hidden;
-      box-shadow: 0 4px 24px 0 #ffe7f0cc;
       background: #000;
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
+      cursor: none !important; /* 强制隐藏鼠标光标 */
     }
+    
+    .standby-video-box::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background: linear-gradient(to bottom, transparent, rgba(242, 255, 245, 0.97));
+      z-index: 2;
+      pointer-events: none;
+    }
+    
     .standby-video-box video {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center 40%;
       background: #000;
       display: block;
+      z-index: 1;
+      cursor: none !important; /* 强制隐藏鼠标光标 */
     }
+    
+    /* 视频控件样式优化 */
+    video::-webkit-media-controls-panel {
+      z-index: 3;
+      cursor: none !important; /* 强制隐藏鼠标光标 */
+    }
+    
     .avatar {
       width: 170px;
       height: 170px;
@@ -80,21 +295,26 @@
       border: 4px solid #ffb347;
       position: relative;
       animation: float 3s ease-in-out infinite;
+      cursor: none !important; /* 强制隐藏鼠标光标 */
     }
+    
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
+    
     .avatar img {
       width: 90%;
       height: auto;
       object-fit: contain;
       border-radius: 50%;
     }
+    
     .avatar-info {
       text-align: center;
       margin-bottom: 12px;
     }
+    
     .avatar-info .name {
       font-size: 22px;
       font-weight: bold;
@@ -103,46 +323,50 @@
       margin-bottom: 2px;
       font-family: 'ZCOOL KuaiLe', cursive;
     }
+    
     .avatar-info .desc {
-      font-size: 15px;
+      font-size: 16px;
       color: #7b7b7b;
       font-family: 'ZCOOL KuaiLe', cursive;
     }
+    
     .chat-area {
       flex: 1;
       width: 100%;
-      padding: 0 16px;
+      height: calc(50% - 80px);
+      padding: 10px 16px 70px 16px;
       overflow-y: auto;
       margin-bottom: 8px;
       display: flex;
       flex-direction: column;
       gap: 12px;
       z-index: 1;
+      background: rgba(242, 255, 245, 0.97);
+      cursor: none !important; /* 强制隐藏鼠标光标 */
     }
-
-          .time-display {
-        text-align: center;
-        padding: 8px 16px;
-        color: #ffffff;
-        font-size: 14px;
-        font-weight: normal;
-        font-family: system-ui, -apple-system, sans-serif;
-        background-color: rgba(0, 0, 0, 0.2);
-        border-radius: 16px;
-        width: fit-content;
-        margin: 16px auto;
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        z-index: 2;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-      }
-      
-      .bubble {
-        max-width: 80%;
+    
+    .time-display {
+      text-align: center;
+      padding: 6px 14px;
+      color: #555;
+      font-size: 12px;
+      font-weight: normal;
+      font-family: system-ui, -apple-system, sans-serif;
+      background-color: rgba(0, 0, 0, 0.08);
+      border-radius: 16px;
+      width: fit-content;
+      margin: 0 auto 12px auto;
+      z-index: 2;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      align-self: center;
+    }
+    
+    .bubble {
+      max-width: 80%;
       padding: 12px 18px;
       border-radius: 22px;
-      font-size: 17px;
-      line-height: 1.7;
+      font-size: 16px;
+      line-height: 1.6;
       word-break: break-all;
       margin-bottom: 2px;
       box-shadow: 0 4px 16px rgba(0,0,0,0.06);
@@ -150,31 +374,35 @@
       opacity: 0;
       animation: fadeInBubble 0.5s forwards;
     }
+    
     @keyframes fadeInBubble {
       from { opacity: 0; transform: translateY(20px) scale(0.95); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
+    
     .bubble.user {
       background: linear-gradient(90deg, #fbeee6 0%, #ffe7f0 100%);
       align-self: flex-end;
       border-bottom-right-radius: 8px;
       color: #ff9800;
-      font-weight: bold;
+      font-weight: normal;
       box-shadow: 0 2px 8px #ffb34733;
     }
+    
     .bubble.bot {
       background: linear-gradient(90deg, #e6f7ff 0%, #f0fff7 100%);
       align-self: flex-start;
       border-bottom-left-radius: 8px;
       color: #555;
-      font-weight: bold;
+      font-weight: normal;
       box-shadow: 0 2px 8px #2196f333;
     }
+    
     .input-area-wrapper {
       width: 100%;
       display: flex;
       justify-content: center;
-      position: fixed;
+      position: absolute;
       left: 0;
       bottom: 0;
       z-index: 10;
@@ -182,52 +410,61 @@
       pointer-events: none;
       padding: 0;
     }
+    
     .input-area {
       width: 100%;
-      max-width: min(420px, 100%);
+      max-width: 356px;
       margin: 0 auto;
-      background: rgba(255,255,255,0.98);
+      background: rgba(242, 255, 245, 0.98);
       display: flex;
       align-items: center;
       padding: 12px 16px;
       box-sizing: border-box;
-      border-top: 1px solid #f0f0f0;
-      border-radius: 0 0 32px 32px;
+      border-top: 1px solid rgba(220, 240, 225, 0.4);
+      border-radius: 0 0 36px 36px;
       pointer-events: auto;
-      box-shadow: 0 -2px 12px #ffe7f033;
+      box-shadow: 0 -2px 12px rgba(220, 240, 225, 0.15);
+      height: 70px;
+      cursor: none !important; /* 强制隐藏鼠标光标 */
     }
+    
     .input-area input {
       flex: 1;
       border: none;
       border-radius: 22px;
       padding: 12px 16px;
-      font-size: 17px;
+      font-size: 16px;
       background: #f7f7fa;
       outline: none;
       margin-right: 10px;
       box-shadow: 0 2px 8px #c6e6fb22;
       transition: box-shadow 0.2s;
+      cursor: text; /* 在输入框上显示文本光标 */
     }
+    
     .input-area input:focus {
       box-shadow: 0 2px 12px #ffb34744;
     }
+    
     .input-area button {
       background: linear-gradient(90deg, #ffb347 0%, #ffcc80 100%);
       border: none;
       border-radius: 22px;
-      padding: 10px 22px;
-      font-size: 17px;
+      padding: 10px 20px;
+      font-size: 16px;
       color: #fff;
-      font-weight: bold;
-      cursor: pointer;
+      font-weight: normal;
+      cursor: pointer; /* 在按钮上显示指针光标 */
       box-shadow: 0 2px 8px #ffb34733;
       transition: background 0.2s, transform 0.1s;
       font-family: 'ZCOOL KuaiLe', cursive;
     }
+    
     .input-area button:active {
       background: linear-gradient(90deg, #ffcc80 0%, #ffb347 100%);
       transform: scale(0.96);
     }
+    
     @media (max-width: 480px) {
       body {
         background: none;
@@ -236,64 +473,98 @@
         overflow-x: hidden;
         font-size: 100%;
       }
+      
+      .phone-wrapper {
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        border-radius: 0;
+        padding: 0;
+        box-shadow: none;
+      }
+      
+      .notch, .power-button, .volume-up, .volume-down {
+        display: none;
+      }
+      
+      .status-bar {
+        display: none;
+      }
+      
+      .home-indicator {
+        display: none;
+      }
+      
       .container {
         width: 100%;
         max-width: 100%;
-        min-height: 100vh;
+        height: 100vh;
         margin: 0;
-        padding: 0 0 calc(100px + env(safe-area-inset-bottom)) 0;
-        border-radius: 32px 32px 0 0;
+        padding: 0;
+        border-radius: 0;
       }
+      
       .standby-video-box {
         width: 100%;
         max-width: 100%;
-        aspect-ratio: 4/5;
-        border-radius: 32px 32px 0 0;
+        height: 50%;
+        border-radius: 0;
       }
+      
+      .chat-area {
+        height: calc(50% - 70px);
+        padding: 10px 16px 70px 16px;
+      }
+      
       .input-area-wrapper {
         width: 100%;
         left: 0;
         padding: 0;
+        bottom: env(safe-area-inset-bottom);
       }
+      
       .input-area {
         width: 100%;
         max-width: 100%;
         border-radius: 0 0 32px 32px;
-        padding: 12px 16px calc(12px + env(safe-area-inset-bottom)) 16px;
+        padding: 12px 16px;
+        height: 70px;
       }
+      
       .input-area input {
         padding: 12px 16px;
-        font-size: 17px;
+        font-size: 16px;
         margin-right: 10px;
       }
+      
       .input-area button {
-        padding: 10px 22px;
-        font-size: 17px;
+        padding: 10px 20px;
+        font-size: 16px;
       }
-      .chat-area {
-        width: 100%;
-        padding: 0 16px;
-        gap: 12px;
-      }
+      
       .bubble {
         max-width: 80%;
         padding: 12px 18px;
-        font-size: 17px;
-        line-height: 1.7;
+        font-size: 16px;
+        line-height: 1.6;
         border-radius: 22px;
       }
+      
       .bubble.user {
         border-bottom-right-radius: 8px;
       }
+      
       .bubble.bot {
         border-bottom-left-radius: 8px;
       }
+      
       .time-display {
-        padding: 8px 16px;
-        font-size: 14px;
-        margin: 16px auto;
+        padding: 6px 14px;
+        font-size: 12px;
+        margin: 0 auto 12px auto;
         border-radius: 16px;
       }
+      
       .avatar {
         width: 140px;
         height: 140px;
@@ -306,12 +577,15 @@
       .container {
         border-radius: 28px 28px 0 0;
       }
+      
       .standby-video-box {
         border-radius: 28px 28px 0 0;
       }
+      
       .input-area {
         border-radius: 0 0 28px 28px;
       }
+      
       .avatar {
         width: 130px;
         height: 130px;
@@ -323,19 +597,24 @@
       .container {
         border-radius: 24px 24px 0 0;
       }
+      
       .standby-video-box {
         border-radius: 24px 24px 0 0;
       }
+      
       .input-area {
         border-radius: 0 0 24px 24px;
       }
+      
       .avatar {
         width: 120px;
         height: 120px;
       }
+      
       .bubble {
         font-size: 16px;
       }
+      
       .input-area input, .input-area button {
         font-size: 16px;
       }
@@ -347,15 +626,17 @@
         max-width: min(500px, 100%);
         border-radius: 32px;
       }
+      
       .standby-video-box {
         border-radius: 32px 32px 0 0;
       }
+      
       .input-area {
         max-width: min(500px, 100%);
       }
     }
-      
-      /* 背景装饰元素 */
+    
+    /* 背景装饰元素 */
     .bg-deco {
       position: fixed;
       z-index: 0;
@@ -366,6 +647,7 @@
       top: 0;
       overflow: hidden;
     }
+    
     /* 星星基础样式 */
     .star {
       position: absolute;
@@ -382,11 +664,13 @@
       height: 12px; 
       box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.8);
     }
+    
     .star.medium { 
       width: 18px; 
       height: 18px;
       box-shadow: 0 0 25px 6px rgba(255, 255, 255, 0.8);
     }
+    
     .star.large { 
       width: 24px; 
       height: 24px;
@@ -426,12 +710,14 @@
         opacity: 0;
       }
     }
+    
     .bg-blur {
       position: absolute;
       border-radius: 50%;
       filter: blur(60px);
       opacity: 0.5;
     }
+    
     .bg-cloud {
       position: absolute;
       background: #fff;
@@ -439,6 +725,7 @@
       opacity: 0.7;
       filter: blur(2px);
     }
+    
     .bg-bubble {
       position: absolute;
       border-radius: 50%;
@@ -446,6 +733,18 @@
       opacity: 0.4;
       filter: blur(1px);
       border: 2px solid #fff6;
+    }
+    
+    /* 特定元素隐藏鼠标光标 */
+    .container,
+    .chat-area,
+    .input-area,
+    .input-area input,
+    .input-area button,
+    .standby-video-box,
+    video,
+    video::-webkit-media-controls-panel {
+      cursor: none !important;
     }
   </style>
 </head>
@@ -485,30 +784,55 @@
     <div class="bg-bubble" style="width: 18px; height: 18px; left: 30vw; top: 80vh;"></div>
     <div class="bg-bubble" style="width: 28px; height: 28px; right: 30vw; top: 85vh;"></div>
   </div>
-  <div class="container">
-    <div class="standby-video-box">
-      <video 
-        id="mainVideo"
-        autoplay 
-        muted 
-        playsinline
-        onerror="this.style.display='none'"
-      >
-        <source src="Final.mp4" type="video/mp4">
-        <!-- 视频无法播放时的提示 -->
-        抱歉，您的浏览器不支持 HTML5 视频。
-      </video>
+  <div class="phone-wrapper">
+    <div class="notch">
+      <div class="speaker"></div>
+      <div class="camera"></div>
     </div>
-    <div class="time-display" id="timeDisplay"></div>
-    <div class="chat-area" id="chatArea">
-      <div class="bubble bot">你好，我是数字人付雪，有什么想问我的吗？</div>
-    </div>
-    <div class="input-area-wrapper">
-      <div class="input-area">
-        <input type="text" id="userInput" placeholder="请和我聊天吧..." autocomplete="off" />
-        <button onclick="sendMessage()">发送</button>
+    <div class="power-button"></div>
+    <div class="volume-up"></div>
+    <div class="volume-down"></div>
+    <div class="status-bar">
+      <div class="status-left" id="status-time">11:01</div>
+      <div class="status-right">
+        <div class="signal-icon">
+          <div class="signal-bar signal-bar-1"></div>
+          <div class="signal-bar signal-bar-2"></div>
+          <div class="signal-bar signal-bar-3"></div>
+          <div class="signal-bar signal-bar-4"></div>
+        </div>
+        <div class="battery">
+          <div class="battery-level"></div>
+        </div>
       </div>
     </div>
+    <div class="container">
+      <div class="standby-video-box">
+        <video 
+          id="mainVideo"
+          autoplay 
+          muted 
+          playsinline
+          controls
+          onerror="this.style.display='none'"
+        >
+          <source src="Final.mp4" type="video/mp4">
+          <!-- 视频无法播放时的提示 -->
+          抱歉，您的浏览器不支持 HTML5 视频。
+        </video>
+      </div>
+      <div class="chat-area" id="chatArea">
+        <div class="time-display" id="timeDisplay"></div>
+        <div class="bubble bot">你好，我是数字人付雪，有什么想问我的吗？</div>
+      </div>
+      <div class="input-area-wrapper">
+        <div class="input-area">
+          <input type="text" id="userInput" placeholder="请和我聊天吧..." autocomplete="off" />
+          <button onclick="sendMessage()">发送</button>
+        </div>
+      </div>
+    </div>
+    <div class="home-indicator"></div>
   </div>
   <script>
     // 更新时间显示
@@ -517,12 +841,46 @@
       const hours = String(now.getHours()).padStart(2, '0');
       const minutes = String(now.getMinutes()).padStart(2, '0');
       document.getElementById('timeDisplay').textContent = `${hours}:${minutes}`;
+      
+      // 同时更新状态栏时间
+      document.getElementById('status-time').textContent = `${hours}:${minutes}`;
     }
     
     // 初始更新时间
     updateTime();
     // 每分钟更新一次时间
     setInterval(updateTime, 60000);
+    
+    // 确保视频适当播放并初始化页面
+    document.addEventListener('DOMContentLoaded', function() {
+      const video = document.getElementById('mainVideo');
+      const chatArea = document.getElementById('chatArea');
+      
+      // 确保视频控件可以正常交互
+      video.addEventListener('click', function(e) {
+        // 阻止事件冒泡，确保点击事件不被其他元素捕获
+        e.stopPropagation();
+      });
+      
+      // 视频加载完成后自动播放
+      video.addEventListener('loadeddata', function() {
+        video.play().catch(e => console.log('自动播放失败，需要用户交互:', e));
+      });
+      
+      // 视频播放结束后循环播放
+      video.addEventListener('ended', function() {
+        video.currentTime = 0;
+        video.play().catch(e => console.log('循环播放失败:', e));
+      });
+      
+      // 尝试播放视频
+      video.play().catch(e => console.log('初始播放失败，可能需要用户交互:', e));
+      
+      // 页面加载时滚动到聊天区域底部
+      setTimeout(() => {
+        chatArea.scrollTop = chatArea.scrollHeight;
+      }, 100);
+    });
 
     // 静态问答库
     const qaList = [
@@ -532,7 +890,7 @@
       },
       {
         q: '真希望能快一点！我们今天学哪个新动作呢？',
-        a: '学新动作之前，我们先来回顾一下之前学习的发球吧。接下来，我来演示今天要学的正手高远球，仔细看噢！'
+        a: '学新动作之前，我们先来回顾一下之前学习的发球吧。接下来，我来演示今天要学的正手高远球，要仔细看好噢！'
       },
       {
         q: '太厉害了！看起来好复杂，感觉学不会。',
@@ -540,7 +898,7 @@
       },
       {
         q: '我准备好了！',
-        a: '没关系，我们可以多练习几次，相信你一定可以做到的！'
+        a: ''
       },
     ];
     function normalize(str) {
@@ -566,7 +924,9 @@
       userBubble.innerText = userText;
       chatArea.appendChild(userBubble);
       // 滚动到底部
-      chatArea.scrollTop = chatArea.scrollHeight;
+      setTimeout(() => {
+        chatArea.scrollTop = chatArea.scrollHeight;
+      }, 10);
       // 机器人回复
       setTimeout(() => {
         const answer = findAnswer(userText);
@@ -574,7 +934,9 @@
         botBubble.className = 'bubble bot';
         botBubble.innerText = answer || '抱歉，我暂时还不能回答这个问题哦~可以问我：你的名字是什么、你是做什么的、你有什么获奖经历。';
         chatArea.appendChild(botBubble);
-        chatArea.scrollTop = chatArea.scrollHeight;
+        setTimeout(() => {
+          chatArea.scrollTop = chatArea.scrollHeight;
+        }, 10);
       }, 500);
       input.value = '';
       input.focus();
